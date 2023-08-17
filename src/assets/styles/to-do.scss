@@ -1,0 +1,268 @@
+.gradient {
+	background: $textGradient;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.todo {
+	@include adaptiveValue("padding-top", 75, 30);
+	@include adaptiveValue("padding-bottom", 75, 30);
+	background: #FCFCFC;
+	//height: 100vh;
+
+	// .todo__container
+	&__container {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&__wrapper {
+		flex: 1 0 auto;
+		display: flex;
+		flex-direction: column;
+		gap: rem(12);
+		max-width: rem(687);
+		@include adaptiveValue("padding-bottom", 75, 30);
+
+	}
+
+	// .todo__header
+	&__header {
+		display: flex;
+		flex-direction: column;
+		gap: rem(20);
+		@include adaptiveValue("gap", 20, 12);
+	}
+
+	// .todo__title
+	&__title {
+		@include adaptiveValue("font-size", 40, 25);
+		font-style: normal;
+		font-weight: 900;
+		line-height: normal;
+		align-self: center;
+	}
+
+	// .todo__form
+	&__form {
+		display: flex;
+		align-items: center;
+	}
+
+	// .todo__counter
+	&__counter {}
+
+	// .todo__body
+	&__body {}
+}
+
+.gradient {}
+
+.form-todo {
+	box-shadow: 0px 10px 20px 0px #F0F0F0;
+
+	// .form-todo__item
+	&__item {
+		flex: 1 0 auto;
+		padding: 0px 0px 0px 5px;
+		// border-radius: 10px 0px 0px 10px;
+		// background: #FFF;
+	}
+
+	// .form-todo__input
+	&__input {
+		border-radius: 10px 0px 0px 10px;
+		background: #FFF;
+		height: rem(57);
+	}
+
+	// .form-todo__button
+	&__button {
+		border-radius: 0px 10px 10px 0px;
+		background: linear-gradient(64deg, #07FDFD 0%, #4D69FE 46.88%, #C0F 100%);
+		padding: 16px 25px;
+		color: #fff;
+		font-size: 20px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: normal;
+
+		@media (max-width:$mobile) {
+			padding: 16px 16px;
+		}
+	}
+}
+
+.input {}
+
+.button {}
+
+.counter-todo {
+	display: flex;
+	align-items: center;
+	// justify-content: center;
+	// gap: rem(19);
+	column-gap: rem(19);
+	row-gap: rem(12);
+
+	@media (max-width:$mobileSmall) {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	// .counter-todo__item
+	&__item {
+		cursor:pointer;
+		flex: 0 1 50%;
+		padding: 10px 0px 10px 16px;
+		background: #FFF;
+		box-shadow: 0px 10px 20px 0px rgba(240, 240, 240, 0.25);
+
+		&.active{
+			border: 1px solid #D9D9D9;
+
+		}
+	}
+
+	// .counter-todo__content
+	&__content {
+		font-size: rem(16);
+		font-style: normal;
+		font-weight: 600;
+		line-height: normal;
+	}
+}
+
+.body-todo {
+
+	// .body-todo__list
+	&__list {
+		display: flex;
+		flex-direction: column;
+		gap: rem(12);
+		height: 274px;
+		overflow-y: auto;
+		overflow-x: hidden;
+		&::-webkit-scrollbar {
+			width: 5px;
+			background: #fff;
+			border-radius: 50px;
+		}
+
+		&::-webkit-scrollbar-thumb {
+			background: $textGradient;
+			//-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			border-radius: 5px;
+			position: relative;
+		}
+
+	}
+
+	// .body-todo__item
+	&__item {
+		transition: all 0.3s ease 0s;
+		gap:rem(10);
+		@media (any-hover: hover) {
+			&:hover {
+				box-shadow: 0px 10px 20px 0px #F0F0F0;
+			}
+		}
+
+		display: flex;
+		justify-content: space-between;
+		// border: 1px solid #D9D9D9;
+		background: #FFF;
+		box-shadow: 0px 10px 20px 0px rgba(240, 240, 240, 0.25);
+		padding: 16px 16px;
+
+		@media (max-width:$mobile) {
+			padding: 16px 5px;
+		}
+
+
+
+	}
+
+	&__field {
+		position: relative;
+		flex: 1 0 auto;
+
+		&::after {
+			content: '';
+			position: absolute;
+			width: 0%;
+			height: 1px;
+			bottom: 0px;
+			left: 0;
+			background: $textGradient;
+			transition: all 0.3s ease 0s;
+
+		}
+		&.active{
+
+			&::after {
+
+				width: 100%;
+			}
+		}
+		//@media (any-hover: hover) {
+		//	&:hover {
+		//		// box-shadow: 0px 10px 20px 0px rgba(240, 240, 240, 0.25);
+		//
+		//		&::after {
+		//
+		//			width: 100%;
+		//		}
+		//	}
+		//}
+
+	}
+
+	// .body-todo__input
+	&__input {
+		:focus &{
+			.body-todo__field::after {
+				width: 100%;
+			}
+		}
+
+		&:active {
+			.body-todo__field::after {
+				width: 100%;
+			}
+		}
+	}
+
+	// .body-todo__control
+	&__control {
+		display: flex;
+		align-items: center;
+		gap: rem(10);
+	}
+}
+
+
+
+.control-todo {
+
+	// .control-todo__item
+	&__item {
+		cursor: pointer;
+	}
+}
+/* 1. declare transition */
+.fade-move,
+.fade-enter-active,
+.fade-leave-active {
+	transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+///* 2. declare enter from and leave to state */
+.fade-enter-from,
+.fade-leave-to {
+	opacity: 0;
+	transform: scaleY(0.01) translate(30px, 0);
+}
+

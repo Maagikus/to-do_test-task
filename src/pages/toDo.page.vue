@@ -72,11 +72,9 @@ export default {
   components: {
     ListItem,
   },
-  // `setup` is a special hook dedicated for the Composition API.
 
   setup() {
     const todoStore = useToDoStore();
-    // const uuid = uuid()
     onBeforeMount(() => {
       data.taskList = [...todoStore.getAllTasks()];
       data.doneTaskList = [...todoStore.getDoneTasks()];
